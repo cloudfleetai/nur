@@ -10,22 +10,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1vym18hiiwfwqz7vwdxygb3z02mdrv0kb4prw57piwq6k8x28mdj";
-    aarch64-linux = "013vijf04ji6ic36k80lbizpng0d1gbv8yvmyc4clcscvadc3wyr";
-    x86_64-darwin = "0vg5c42c1a86dyrzxa3rnvwz8c1l5j9ngcrgknzhnlnkhmclsjwp";
-    aarch64-darwin = "0vg5c42c1a86dyrzxa3rnvwz8c1l5j9ngcrgknzhnlnkhmclsjwp";
+    x86_64-linux = "1v0gyhy4sr7c4xflwh3darvjn8shavjl3yb0kpif28l89vl1zbv2";
+    aarch64-linux = "1pqbc83apgxdxgk4a1v3f02d6lvxb1z4wg25h8xgaci5qfccz1wq";
+    x86_64-darwin = "0kk206zys6py6q2chmn75a5ybybrza104jkjjphfw9154cbifg07";
+    aarch64-darwin = "0kk206zys6py6q2chmn75a5ybybrza104jkjjphfw9154cbifg07";
   };
 
   urlMap = {
-    x86_64-linux = "https://downloads.cloudfleet.ai/cli/1.1.0/cloudfleet_linux_amd64.zip";
-    aarch64-linux = "https://downloads.cloudfleet.ai/cli/1.1.0/cloudfleet_linux_arm64.zip";
-    x86_64-darwin = "https://downloads.cloudfleet.ai/cli/1.1.0/cloudfleet_darwin_all.zip";
-    aarch64-darwin = "https://downloads.cloudfleet.ai/cli/1.1.0/cloudfleet_darwin_all.zip";
+    x86_64-linux = "https://downloads.cloudfleet.ai/cli/1.2.0/cloudfleet_linux_amd64.zip";
+    aarch64-linux = "https://downloads.cloudfleet.ai/cli/1.2.0/cloudfleet_linux_arm64.zip";
+    x86_64-darwin = "https://downloads.cloudfleet.ai/cli/1.2.0/cloudfleet_darwin_all.zip";
+    aarch64-darwin = "https://downloads.cloudfleet.ai/cli/1.2.0/cloudfleet_darwin_all.zip";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "cloudfleet";
-  version = "1.1.0";
+  version = "1.2.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
