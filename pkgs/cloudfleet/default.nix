@@ -12,8 +12,8 @@ let
   shaMap = {
     x86_64-linux = "1fhlj82n8h6cznjaw34ryjpcg8pb5rprl9mi91hz82qmd1vyd1v7";
     aarch64-linux = "02jvz3l60724grynqpp7mj3gj41ygb2y2drjf1jf4whshaixgkn8";
-    x86_64-darwin = "027y640rkzh0nhwazs8yi4mr9d0jmi8r4f7rmz2vyb1z7mvyfqq7";
-    aarch64-darwin = "027y640rkzh0nhwazs8yi4mr9d0jmi8r4f7rmz2vyb1z7mvyfqq7";
+    x86_64-darwin = "1f4yjh50pkzf5zz2jpfkvbvb3gr1ybaj9rsm4dq7gwy1zbcakz81";
+    aarch64-darwin = "1f4yjh50pkzf5zz2jpfkvbvb3gr1ybaj9rsm4dq7gwy1zbcakz81";
   };
 
   urlMap = {
