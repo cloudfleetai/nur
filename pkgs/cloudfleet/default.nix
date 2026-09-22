@@ -10,22 +10,22 @@
 let
   inherit (stdenvNoCC.hostPlatform) system;
   shaMap = {
-    x86_64-linux = "1fhlj82n8h6cznjaw34ryjpcg8pb5rprl9mi91hz82qmd1vyd1v7";
-    aarch64-linux = "02jvz3l60724grynqpp7mj3gj41ygb2y2drjf1jf4whshaixgkn8";
-    x86_64-darwin = "1f4yjh50pkzf5zz2jpfkvbvb3gr1ybaj9rsm4dq7gwy1zbcakz81";
-    aarch64-darwin = "1f4yjh50pkzf5zz2jpfkvbvb3gr1ybaj9rsm4dq7gwy1zbcakz81";
+    x86_64-linux = "0ns5cinyfn2hcmbm8g0xls72hcg9kaz6lv0vhh63y1j2jyzh6nbd";
+    aarch64-linux = "0dqp492vlg437wvp3ccbs8lnszzcvz3qb0nlwsrnnngycq744m2l";
+    x86_64-darwin = "0xci8bmp77rrs0q46d4m16b0811n5wdqpgl1xw0js27qc49y6rm6";
+    aarch64-darwin = "0xci8bmp77rrs0q46d4m16b0811n5wdqpgl1xw0js27qc49y6rm6";
   };
 
   urlMap = {
-    x86_64-linux = "https://downloads.cloudfleet.ai/cli/1.4.0/cloudfleet_linux_amd64.zip";
-    aarch64-linux = "https://downloads.cloudfleet.ai/cli/1.4.0/cloudfleet_linux_arm64.zip";
-    x86_64-darwin = "https://downloads.cloudfleet.ai/cli/1.4.0/cloudfleet_darwin_all.zip";
-    aarch64-darwin = "https://downloads.cloudfleet.ai/cli/1.4.0/cloudfleet_darwin_all.zip";
+    x86_64-linux = "https://downloads.cloudfleet.ai/cli/1.5.0/cloudfleet_linux_amd64.zip";
+    aarch64-linux = "https://downloads.cloudfleet.ai/cli/1.5.0/cloudfleet_linux_arm64.zip";
+    x86_64-darwin = "https://downloads.cloudfleet.ai/cli/1.5.0/cloudfleet_darwin_all.zip";
+    aarch64-darwin = "https://downloads.cloudfleet.ai/cli/1.5.0/cloudfleet_darwin_all.zip";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "cloudfleet";
-  version = "1.4.0";
+  version = "1.5.0";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -36,6 +36,7 @@ stdenvNoCC.mkDerivation {
   nativeBuildInputs = [ installShellFiles unzip ];
 
   installPhase = ''
+    runHook preInstall
     mkdir -p $out/bin
     cp -vr ./cloudfleet $out/bin/cloudfleet
     # Docker credential helper symlink
@@ -46,6 +47,7 @@ stdenvNoCC.mkDerivation {
     installShellCompletion --cmd cloudfleet \
     --bash <($out/bin/cloudfleet completion bash) \
     --zsh <($out/bin/cloudfleet completion zsh)
+    runHook postInstall
   '';
 
   meta = {
